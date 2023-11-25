@@ -1,0 +1,75 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\.e8b04dfa54598e98ed0ae21440e80b7bf2efe1cc-audit.json",
+    "files": [
+        {
+            "date": 1693499944969,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-31-08-22-success.log",
+            "hash": "f5412061e298b30ba172e4b8ab6fad4c8629db22039f4b896072c1a286825182"
+        },
+        {
+            "date": 1693501204409,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-31-08-23-success.log",
+            "hash": "ecf554b8c715a4a23f41c13e3f59ee2c1d312d35ea0606511d3220432c429629"
+        },
+        {
+            "date": 1693505014901,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-00-success.log",
+            "hash": "4b97f2b74b86f4bcc0bdc049311835b8072a98a8f3eb98e11c2fe154d1179997"
+        },
+        {
+            "date": 1693508539690,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-01-success.log",
+            "hash": "1173ef3fd920d993914418b7cbc323cf7f4908e046b24ef06c727a6ee7a4fbe1"
+        },
+        {
+            "date": 1693572741043,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-18-success.log",
+            "hash": "17f37bab2c3b6099d1aff351b4ef76bccc8a373c730702720940f3cd5993ab31"
+        },
+        {
+            "date": 1693573274236,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-19-success.log",
+            "hash": "733de5be0f0fee87e823830a279d8244f39b71e9640219f39c189094ef4de79f"
+        },
+        {
+            "date": 1693576849752,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-20-success.log",
+            "hash": "dfa75448529c25277a47eb3a436ba753f0262dbebdb9917d0ea4ffd47a24b3c4"
+        },
+        {
+            "date": 1693580926179,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-21-success.log",
+            "hash": "587ce741a5ffacb33867874872a140c2ca6b5537e9d186c4a66ffa5f57642063"
+        },
+        {
+            "date": 1693584194356,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-22-success.log",
+            "hash": "a859b7479dd437ecd0f20583f75904429e67926c816231201b527d694280dbcd"
+        },
+        {
+            "date": 1693587642386,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-01-09-23-success.log",
+            "hash": "7b1a497dd4da86ec0c9b4d7ee777b7b530e053d0d9a8fb15d3c0fea1c3fa9ff3"
+        },
+        {
+            "date": 1693636552787,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-02-09-12-success.log",
+            "hash": "896c0e67d89b2b0e1b1504610a407169c9fef7b2e55c5b43190708ffcf1cf0c7"
+        },
+        {
+            "date": 1693638011425,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-02-09-13-success.log",
+            "hash": "caeaacdfb698400c0f8e39dfd1a6b393eb1bdbbeccab726f92d034520c4e155a"
+        },
+        {
+            "date": 1693643528020,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\successes\\phu-2023-02-09-14-success.log",
+            "hash": "e5fde778ab2e790fb5a77e713cb2d1cf18a36a6ed20894b7100e0dbd620649ee"
+        }
+    ],
+    "hashType": "sha256"
+}

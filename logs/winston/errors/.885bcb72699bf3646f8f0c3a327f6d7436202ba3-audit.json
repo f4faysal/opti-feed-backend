@@ -1,0 +1,75 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\.885bcb72699bf3646f8f0c3a327f6d7436202ba3-audit.json",
+    "files": [
+        {
+            "date": 1693499944979,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-31-08-22-error.log",
+            "hash": "7a663fcbadcb6f190d259a3b189999117a5e7f54e9c1a8dc4548215c78484544"
+        },
+        {
+            "date": 1693501204421,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-31-08-23-error.log",
+            "hash": "efbbc6293ce635d55245cb9f6023eaafecd68c06e58a9ded8c4d5403d4ccd3b3"
+        },
+        {
+            "date": 1693505014907,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-00-error.log",
+            "hash": "e0055da435b154e92865644988d66a63be6c328ef92fe38877115747801d195b"
+        },
+        {
+            "date": 1693508539700,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-01-error.log",
+            "hash": "6d75b30846aecfe79f390dcc2e141359ad3a8b0bcf744645f899d3e2619f3f05"
+        },
+        {
+            "date": 1693572741050,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-18-error.log",
+            "hash": "efc5ed8569acda8e9756e6082c4a79e430d0847cc9c0a4369b3c51c3c6214ec0"
+        },
+        {
+            "date": 1693573274243,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-19-error.log",
+            "hash": "c33082fb66b41890ed2beb3500ac0488a91b6522dafadda0191520269ec9c187"
+        },
+        {
+            "date": 1693576849817,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-20-error.log",
+            "hash": "3851ab43d154078e612153ef828e408e313be885a20a8870efe1db6aadb8343a"
+        },
+        {
+            "date": 1693580926188,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-21-error.log",
+            "hash": "0fb728583c0e3d39e29c0a0c779b53f90717a661c87dc87edb7e1ed7ec674639"
+        },
+        {
+            "date": 1693584194366,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-22-error.log",
+            "hash": "44197405cc5f5a6e791c5d1addce39b0fcee036bc262a31cc6090462ccd6e351"
+        },
+        {
+            "date": 1693587642403,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-01-09-23-error.log",
+            "hash": "6767018c1f2398bad37ec83ca31bc2d25d7f436e6b31dc5e0b3d19061b65c444"
+        },
+        {
+            "date": 1693636552798,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-02-09-12-error.log",
+            "hash": "f5d81a2560dc6aaa8d7a80cc193cf144922ddfe5710e169003a0f4b783ce5b2e"
+        },
+        {
+            "date": 1693638011433,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-02-09-13-error.log",
+            "hash": "3f7026ee38fb8f8695a5f7d56c8a68c6d839d3ae07f5637d0a54c08431b4b00a"
+        },
+        {
+            "date": 1693643528033,
+            "name": "C:\\Users\\FOYSAL\\Project\\level-2\\Assignment\\book-catallog-backend-assignment-8\\logs\\winston\\errors\\phu-2023-02-09-14-error.log",
+            "hash": "26850a95eaa405cd43f05587720b8295ac517bb801f029cee09ba92df9868901"
+        }
+    ],
+    "hashType": "sha256"
+}
