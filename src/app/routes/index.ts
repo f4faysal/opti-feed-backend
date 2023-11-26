@@ -1,5 +1,6 @@
 import express from 'express';
 import { AuthRouter } from '../modules/auth/user.routes';
+import { CommentRouter } from '../modules/comment/comment.routes';
 import { PostRouter } from '../modules/post/post.routes';
 
 const router = express.Router();
@@ -13,6 +14,10 @@ const moduleRoutes = [
   {
     path: '/post',
     routes: PostRouter,
+  },
+  {
+    path: '/comment',
+    routes: CommentRouter,
   },
 ];
 
