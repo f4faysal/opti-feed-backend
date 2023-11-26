@@ -34,10 +34,9 @@ const loginUser: RequestHandler = catchAsync(
 
 const getProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    // Retrieve the user's _id & role from the access token
-    const { userId } = req.user as { userId: string };
+    const { username } = req.params;
 
-    const result = await UserService.getProfile(userId);
+    const result = await UserService.getProfile(username);
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
