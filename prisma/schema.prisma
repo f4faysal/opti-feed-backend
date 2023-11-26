@@ -11,12 +11,56 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
-  userName     String?
-  passwordHash String?
-  fristName    String?
-  lastName     String?
-  birthDate    String?
-  createdAt    DateTime @default(now())
+  id              String    @id @default(uuid())
+  name            String?
+  username        String?   @unique
+  bio             String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  image           String?
+  coverImage      String?
+  profileImage    String?
+  hashedPassword  String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  followingIds    String[]
+  hasNotification Boolean?
+
+  posts         Post[]
+  comments      Comment[]
+  notifications Notification[]
+}
+
+model Post {
+  id        String   @id @default(uuid())
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  likedIds  String[]
+  image     String?
+
+  comments Comment[]
+  user     User      @relation(fields: [userId], references: [id])
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  postId    String
+
+  user User @relation(fields: [userId], references: [id])
+  post Post @relation(fields: [postId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  body      String
+  userId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
 }
