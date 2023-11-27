@@ -78,6 +78,19 @@ const getPostsByUser: RequestHandler = catchAsync(
   }
 );
 
+const linkPostToUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { userId } = req.user as { userId: string };
+    const result = await PostService.linkPostToUser(userId, req.params.id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Post liked successfully',
+      data: result,
+    });
+  }
+);
+
 export const PostController = {
   getInToDB,
   getPostsByUser,
@@ -85,4 +98,5 @@ export const PostController = {
   createInToDB,
   updateInToDB,
   deleteInToDB,
+  linkPostToUser,
 };

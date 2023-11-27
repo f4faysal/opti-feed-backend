@@ -71,6 +71,51 @@ const getPostsByUser = async (id: string): Promise<Post[]> => {
   return result;
 };
 
+const linkPostToUser = async (userId: string, postId: string) => {
+  const post: any = await prisma.post.findUnique({
+    where: {
+      id: postId,
+    },
+  });
+
+  const updatedLikedIds = [...(post.likedIds || [])];
+
+  updatedLikedIds.push(userId);
+
+  try {
+    if (post?.userId) {
+      await prisma.notification.create({
+        data: {
+          body: 'Someone liked your Tuntuni!',
+          userId: post.userId,
+        },
+      });
+
+      await prisma.user.update({
+        where: {
+          id: post.userId,
+        },
+        data: {
+          hasNotification: true,
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+  const updatedPost = await prisma.post.update({
+    where: {
+      id: postId,
+    },
+    data: {
+      likedIds: updatedLikedIds,
+    },
+  });
+
+  return updatedPost;
+};
+
 export const PostService = {
   getInToDB,
   getByIdInToDB,
@@ -78,4 +123,5 @@ export const PostService = {
   updateInToDB,
   deleteInToDB,
   getPostsByUser,
+  linkPostToUser,
 };
