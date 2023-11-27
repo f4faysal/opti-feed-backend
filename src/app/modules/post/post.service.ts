@@ -8,6 +8,14 @@ const createInToDB = async (paylod: Post): Promise<Post> => {
 
 const getInToDB = async (): Promise<Post[]> => {
   const result = await prisma.post.findMany({
+    include: {
+      comments: {
+        include: {
+          user: true,
+        },
+      },
+      user: true,
+    },
     orderBy: {
       createdAt: 'desc',
     },
@@ -18,6 +26,14 @@ const getInToDB = async (): Promise<Post[]> => {
 const getByIdInToDB = async (id: string): Promise<Post | null> => {
   const result = await prisma.post.findUnique({
     where: { id },
+    include: {
+      comments: {
+        include: {
+          user: true,
+        },
+      },
+      user: true,
+    },
   });
 
   return result;
@@ -34,10 +50,32 @@ const deleteInToDB = async (id: string): Promise<Post> => {
   return result;
 };
 
+const getPostsByUser = async (id: string): Promise<Post[]> => {
+  const result = await prisma.post.findMany({
+    where: {
+      userId: id,
+    },
+    include: {
+      comments: {
+        include: {
+          user: true,
+        },
+      },
+      user: true,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return result;
+};
+
 export const PostService = {
   getInToDB,
   getByIdInToDB,
   createInToDB,
   updateInToDB,
   deleteInToDB,
+  getPostsByUser,
 };

@@ -66,8 +66,21 @@ const deleteInToDB: RequestHandler = catchAsync(
   }
 );
 
+const getPostsByUser: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await PostService.getPostsByUser(req.params.id);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Posts fetched successfully',
+      data: result,
+    });
+  }
+);
+
 export const PostController = {
   getInToDB,
+  getPostsByUser,
   getByIdInToDB,
   createInToDB,
   updateInToDB,
