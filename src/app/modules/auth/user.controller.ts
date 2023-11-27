@@ -32,6 +32,21 @@ const loginUser: RequestHandler = catchAsync(
   }
 );
 
+const updateProfile: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { ...updateData } = req.body;
+    const { username } = req.params;
+    const result = await UserService.updateProfile(updateData, username);
+
+    sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: 'User profile updated successfully !',
+      data: result,
+    });
+  }
+);
+
 const getProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { username } = req.params;
@@ -51,4 +66,5 @@ export const UserController = {
   registerUser,
   loginUser,
   getProfile,
+  updateProfile,
 };

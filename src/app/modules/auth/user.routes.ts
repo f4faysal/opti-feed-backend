@@ -18,4 +18,6 @@ router.post(
   UserController.loginUser
 );
 
+router.patch('/:username', UserController.updateProfile);
+
 export const AuthRouter = router;

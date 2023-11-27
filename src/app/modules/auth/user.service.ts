@@ -78,6 +78,15 @@ const loginUser = async (payload: {
   return { accessToken };
 };
 
+const updateProfile = async (
+  user: User,
+  username: string
+): Promise<Partial<User>> => {
+  const result = await prisma.user.update({ where: { username }, data: user });
+
+  return result;
+};
+
 const getProfile = async (username: string): Promise<User | null> => {
   const result = await prisma.user.findUnique({ where: { username } });
   return result;
@@ -86,5 +95,6 @@ const getProfile = async (username: string): Promise<User | null> => {
 export const UserService = {
   registerUser,
   loginUser,
+  updateProfile,
   getProfile,
 };
