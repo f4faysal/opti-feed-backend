@@ -80,15 +80,15 @@ const loginUser = async (payload: {
 
 const updateProfile = async (
   user: User,
-  username: string
+  id: string
 ): Promise<Partial<User>> => {
-  const result = await prisma.user.update({ where: { username }, data: user });
+  const result = await prisma.user.update({ where: { id }, data: user });
 
   return result;
 };
 
 const getProfile = async (username: string): Promise<User | null> => {
-  const result = await prisma.user.findUnique({ where: { username } });
+  const result = await prisma.user.findUnique({ where: { id: username } });
   return result;
 };
 

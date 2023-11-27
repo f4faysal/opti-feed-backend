@@ -35,8 +35,8 @@ const loginUser: RequestHandler = catchAsync(
 const updateProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { ...updateData } = req.body;
-    const { username } = req.params;
-    const result = await UserService.updateProfile(updateData, username);
+    const { id } = req.params;
+    const result = await UserService.updateProfile(updateData, id);
 
     sendResponse(res, {
       statusCode: 200,
