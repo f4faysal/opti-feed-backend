@@ -87,13 +87,38 @@ const updateProfile = async (
   return result;
 };
 
-const getProfile = async (username: string): Promise<User | null> => {
+const getProfile = async (
+  username: string,
+  userId: string
+): Promise<User | null> => {
   const result = await prisma.user.findUnique({ where: { id: username } });
+
+  console.log(username, 'getProfile');
+
+  const followersCount = await prisma.user.count({
+    where: {
+      followingIds: {
+        has: userId,
+      },
+    },
+  });
+
+  console.log(followersCount, 'profile');
   return result;
 };
 
-const getUserByUsername = async (username: string): Promise<User | null> => {
+const getUserByUsername = async (username: string): Promise<User | any> => {
   const result = await prisma.user.findUnique({ where: { username } });
+
+  const followersCount = await prisma.user.count({
+    where: {
+      followingIds: {
+        has: result?.id || '',
+      },
+    },
+  });
+
+  console.log(followersCount, getUserByUsername);
   return result;
 };
 
@@ -144,6 +169,20 @@ const updatedFollow = async (
   return updatedUser;
 };
 
+const getFollowersCount = async (username: string): Promise<User | any> => {
+  const result = await prisma.user.findUnique({ where: { username } });
+
+  const followersCount = await prisma.user.count({
+    where: {
+      followingIds: {
+        has: result?.id,
+      },
+    },
+  });
+
+  return followersCount;
+};
+
 export const UserService = {
   registerUser,
   loginUser,
@@ -151,4 +190,5 @@ export const UserService = {
   getProfile,
   getUserByUsername,
   updatedFollow,
+  getFollowersCount,
 };

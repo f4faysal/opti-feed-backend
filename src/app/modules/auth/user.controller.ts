@@ -50,8 +50,9 @@ const updateProfile: RequestHandler = catchAsync(
 const getProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
+    const { userId } = req.user as { userId: string };
 
-    const result = await UserService.getProfile(id);
+    const result = await UserService.getProfile(id, userId);
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
@@ -77,10 +78,43 @@ const getUserByUsername: RequestHandler = catchAsync(
   }
 );
 
+const updatedFollow: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { userId } = req.user as { userId: string };
+
+    console.log(userId);
+
+    const result = await UserService.updatedFollow(userId, id);
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User fetched successfully',
+      data: result,
+    });
+  }
+);
+
+const getFollowersCount: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { username } = req.params;
+    const result = await UserService.getFollowersCount(username);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User Followers Count successfully',
+      data: result,
+    });
+  }
+);
+
 export const UserController = {
   registerUser,
   loginUser,
   getProfile,
   updateProfile,
   getUserByUsername,
+  updatedFollow,
+  getFollowersCount,
 };
