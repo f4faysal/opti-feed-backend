@@ -6,7 +6,8 @@ import { userValidation } from './user.validation';
 
 const router = express.Router();
 
-router.get('/profile/:username', UserController.getProfile);
+router.get('/profile/:id', UserController.getProfile);
+router.get('/:username', UserController.getUserByUsername);
 router.post(
   '/sing-up',
   validateRequest(userValidation.register),

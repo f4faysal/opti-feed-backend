@@ -92,9 +92,63 @@ const getProfile = async (username: string): Promise<User | null> => {
   return result;
 };
 
+const getUserByUsername = async (username: string): Promise<User | null> => {
+  const result = await prisma.user.findUnique({ where: { username } });
+  return result;
+};
+
+const updatedFollow = async (
+  currentUserId: string,
+  userId: string
+): Promise<User | null> => {
+  const user: any = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  const updatedFollowingIds = [...(user.followingIds || [])];
+
+  updatedFollowingIds.push(userId);
+
+  // NOTIFICATION PART START
+  try {
+    await prisma.notification.create({
+      data: {
+        body: 'Someone followed you!',
+        userId,
+      },
+    });
+
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        hasNotification: true,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  // NOTIFICATION PART END
+
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: currentUserId,
+    },
+    data: {
+      followingIds: updatedFollowingIds,
+    },
+  });
+
+  return updatedUser;
+};
+
 export const UserService = {
   registerUser,
   loginUser,
   updateProfile,
   getProfile,
+  getUserByUsername,
+  updatedFollow,
 };
