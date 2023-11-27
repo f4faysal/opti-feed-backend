@@ -78,7 +78,7 @@ const linkPostToUser = async (userId: string, postId: string) => {
     },
   });
 
-  const updatedLikedIds = [...(post.likedIds || [])];
+  let updatedLikedIds = [...(post.likedIds || [])];
 
   updatedLikedIds.push(userId);
 
@@ -104,16 +104,33 @@ const linkPostToUser = async (userId: string, postId: string) => {
     console.log(error);
   }
 
-  const updatedPost = await prisma.post.update({
-    where: {
-      id: postId,
-    },
-    data: {
-      likedIds: updatedLikedIds,
-    },
-  });
+  const hasLiked = () => {
+    const list = post?.likedIds || [];
+    return list.includes(userId);
+  };
 
-  return updatedPost;
+  if (hasLiked()) {
+    updatedLikedIds = updatedLikedIds.filter(likedId => likedId !== userId);
+    const updatedPost = await prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        likedIds: updatedLikedIds,
+      },
+    });
+    return updatedPost;
+  } else {
+    const updatedPost = await prisma.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        likedIds: updatedLikedIds,
+      },
+    });
+    return updatedPost;
+  }
 };
 
 export const PostService = {
