@@ -6,8 +6,11 @@ const createInToDB = async (paylod: Notification): Promise<Notification> => {
   return result;
 };
 
-const getInToDB = async (): Promise<Notification[]> => {
+const getInToDB = async (userId: string): Promise<Notification[]> => {
   const result = await prisma.notification.findMany({
+    where: {
+      userId,
+    },
     orderBy: {
       createdAt: 'desc',
     },
@@ -15,6 +18,7 @@ const getInToDB = async (): Promise<Notification[]> => {
 
   return result;
 };
+
 const getByIdInToDB = async (id: string): Promise<Notification | null> => {
   const result = await prisma.notification.findUnique({
     where: { id },
@@ -22,6 +26,7 @@ const getByIdInToDB = async (id: string): Promise<Notification | null> => {
 
   return result;
 };
+
 const updateInToDB = async (
   id: string,
   paylod: Notification

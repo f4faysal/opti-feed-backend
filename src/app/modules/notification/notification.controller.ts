@@ -20,7 +20,9 @@ const createInToDB: RequestHandler = catchAsync(
 
 const getInToDB: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await NotificationService.getInToDB();
+    const { userId } = req.user as any;
+
+    const result = await NotificationService.getInToDB(userId);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

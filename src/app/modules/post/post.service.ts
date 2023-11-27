@@ -86,7 +86,7 @@ const linkPostToUser = async (userId: string, postId: string) => {
     if (post?.userId) {
       await prisma.notification.create({
         data: {
-          body: 'Someone liked your Tuntuni!',
+          body: 'Someone liked your Post!',
           userId: post.userId,
         },
       });
