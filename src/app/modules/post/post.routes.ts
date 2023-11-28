@@ -10,6 +10,6 @@ router.get('/my-post/:id', PostController.getPostsByUser);
 router.post('/', PostController.createInToDB);
 router.post('/like/:id', auth(), PostController.linkPostToUser);
 router.patch('/:id', auth(), PostController.updateInToDB);
-router.delete('/', PostController.deleteInToDB);
+router.delete('/:id', PostController.deleteInToDB);
 
 export const PostRouter = router;

@@ -45,6 +45,20 @@ const updateInToDB = async (id: string, paylod: Post): Promise<Post> => {
 };
 
 const deleteInToDB = async (id: string): Promise<Post> => {
+  const comments = await prisma.comment.findMany({
+    where: {
+      postId: id,
+    },
+  });
+
+  if (comments.length > 0) {
+    await prisma.comment.deleteMany({
+      where: {
+        postId: id,
+      },
+    });
+  }
+
   const result = await prisma.post.delete({ where: { id } });
 
   return result;
