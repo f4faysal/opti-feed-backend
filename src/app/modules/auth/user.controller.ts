@@ -109,6 +109,26 @@ const getFollowersCount: RequestHandler = catchAsync(
   }
 );
 
+const changePassword: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { oldPassword, newPassword } = req.body;
+    const { userId } = req.user as { userId: string };
+
+    const result = await UserService.changePassword(
+      userId,
+      oldPassword,
+      newPassword
+    );
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Password changed successfully',
+      data: result,
+    });
+  }
+);
+
 export const UserController = {
   registerUser,
   loginUser,
@@ -117,4 +137,5 @@ export const UserController = {
   getUserByUsername,
   updatedFollow,
   getFollowersCount,
+  changePassword,
 };

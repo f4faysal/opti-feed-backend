@@ -183,6 +183,48 @@ const getFollowersCount = async (username: string): Promise<User | any> => {
   return followersCount;
 };
 
+const changePassword = async (
+  userId: string,
+  oldPassword: string,
+  newPassword: string
+) => {
+  const user: any = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  const isPasswordMatched = async (
+    givenPassword: string,
+    savedPassword: string
+  ) => {
+    return await bcrypt.compare(givenPassword, savedPassword);
+  };
+
+  if (
+    user.hashedPassword &&
+    !(await isPasswordMatched(oldPassword, user.hashedPassword))
+  ) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Old Password is incorrect');
+  }
+
+  const hashedPassword = await bcrypt.hash(
+    newPassword,
+    Number(config.bycrypt_salt_rounds)
+  );
+
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      hashedPassword,
+    },
+  });
+
+  return updatedUser;
+};
+
 export const UserService = {
   registerUser,
   loginUser,
@@ -191,4 +233,5 @@ export const UserService = {
   getUserByUsername,
   updatedFollow,
   getFollowersCount,
+  changePassword,
 };

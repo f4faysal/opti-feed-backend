@@ -21,7 +21,14 @@ router.post(
   UserController.loginUser
 );
 
-router.patch('/:id', UserController.updateProfile);
 router.post('/follow/:id', auth(), UserController.updatedFollow);
+router.post(
+  '/change-password',
+
+  auth(),
+  UserController.changePassword
+);
+
+router.patch('/:id', UserController.updateProfile);
 
 export const AuthRouter = router;
