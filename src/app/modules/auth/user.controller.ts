@@ -143,6 +143,20 @@ const forgotPassword: RequestHandler = catchAsync(
   }
 );
 
+const resetPassword: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { token, newPassword } = req.body;
+    const result = await UserService.resetPassword(token, newPassword);
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Password reset successfully',
+      data: result,
+    });
+  }
+);
+
 export const UserController = {
   registerUser,
   loginUser,
@@ -153,4 +167,5 @@ export const UserController = {
   getFollowersCount,
   changePassword,
   forgotPassword,
+  resetPassword,
 };

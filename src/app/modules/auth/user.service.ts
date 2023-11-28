@@ -251,12 +251,49 @@ const forgotPassword = async (email: string) => {
       <div>
         <p>Hi, ${user.name}</p>
         <p>Your password reset link: <a href=${resetLink}>Click Here</a></p>
+        <a href=${resetLink}>${resetLink}</a>
         <p>Thank you</p>
       </div>
   `
   );
 
-  return { message: 'Reset password link sent to your email' };
+  return {
+    message:
+      'Reset password link sent to your email, inbox or spam folder please',
+  };
+};
+
+const resetPassword = async (token: string, newPassword: string) => {
+  const { userId } = jwtHelpers.verifyToken(
+    token,
+    config.jwt.secret as Secret
+  ) as { userId: string };
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User does not exist!');
+  }
+
+  const hashedPassword = await bcrypt.hash(
+    newPassword,
+    Number(config.bycrypt_salt_rounds)
+  );
+
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      hashedPassword,
+    },
+  });
+
+  return updatedUser;
 };
 
 export const UserService = {
@@ -269,4 +306,5 @@ export const UserService = {
   getFollowersCount,
   changePassword,
   forgotPassword,
+  resetPassword,
 };
