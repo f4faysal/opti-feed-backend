@@ -18,4 +18,8 @@ export default {
     expires_in: process.env.JWT_EXPIRES_IN,
     refresh_expires_in: process.env.JWT_REFRESH_EXPIRES_IN,
   },
+
+  resetlink: process.env.RESET_PASS_UI_LINK,
+  email: process.env.EMAIL,
+  appPass: process.env.APP_PASS,
 };

@@ -29,6 +29,8 @@ router.post(
   UserController.changePassword
 );
 
+router.post('/forgot-password', UserController.forgotPassword);
+
 router.patch('/:id', UserController.updateProfile);
 
 export const AuthRouter = router;

@@ -129,6 +129,20 @@ const changePassword: RequestHandler = catchAsync(
   }
 );
 
+const forgotPassword: RequestHandler = catchAsync(
+  async (req: Request, res: Response) => {
+    const { email } = req.body;
+    const result = await UserService.forgotPassword(email);
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Reset password link sent to your email',
+      data: result,
+    });
+  }
+);
+
 export const UserController = {
   registerUser,
   loginUser,
@@ -138,4 +152,5 @@ export const UserController = {
   updatedFollow,
   getFollowersCount,
   changePassword,
+  forgotPassword,
 };

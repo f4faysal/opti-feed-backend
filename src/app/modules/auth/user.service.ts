@@ -7,6 +7,7 @@ import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import prisma from '../../../shared/prisma';
+import { sendEmail } from './sendResetMail';
 import { ISingUpUserResponse } from './user.interface';
 
 const registerUser = async (user: User): Promise<ISingUpUserResponse> => {
@@ -225,6 +226,39 @@ const changePassword = async (
   return updatedUser;
 };
 
+const forgotPassword = async (email: string) => {
+  const user: any = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User does not exist!');
+  }
+
+  const passResetToken = jwtHelpers.createToken(
+    { userId: user.id, username: user.username },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string
+  );
+
+  const resetLink: string = config.resetlink + `token=${passResetToken}`;
+
+  await sendEmail(
+    user.email,
+    `
+      <div>
+        <p>Hi, ${user.name}</p>
+        <p>Your password reset link: <a href=${resetLink}>Click Here</a></p>
+        <p>Thank you</p>
+      </div>
+  `
+  );
+
+  return { message: 'Reset password link sent to your email' };
+};
+
 export const UserService = {
   registerUser,
   loginUser,
@@ -234,4 +268,5 @@ export const UserService = {
   updatedFollow,
   getFollowersCount,
   changePassword,
+  forgotPassword,
 };
