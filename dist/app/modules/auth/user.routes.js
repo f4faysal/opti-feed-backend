@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AuthRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const auth_1 = __importDefault(require("../../middlewares/auth"));
+const validateRequest_1 = __importDefault(require("../../middlewares/validateRequest"));
+const user_controller_1 = require("./user.controller");
+const user_validation_1 = require("./user.validation");
+const router = express_1.default.Router();
+router.get('/profile/:id', (0, auth_1.default)(), user_controller_1.UserController.getProfile);
+router.get('/:username', (0, auth_1.default)(), user_controller_1.UserController.getUserByUsername);
+router.get('/follow-count/:username', (0, auth_1.default)(), user_controller_1.UserController.getFollowersCount);
+router.post('/sing-up', (0, validateRequest_1.default)(user_validation_1.userValidation.register), user_controller_1.UserController.registerUser);
+router.post('/sing-in', (0, validateRequest_1.default)(user_validation_1.userValidation.login), user_controller_1.UserController.loginUser);
+router.post('/follow/:id', (0, auth_1.default)(), user_controller_1.UserController.updatedFollow);
+router.post('/change-password', (0, auth_1.default)(), user_controller_1.UserController.changePassword);
+router.post('/forgot-password', user_controller_1.UserController.forgotPassword);
+router.post('/reset-password', user_controller_1.UserController.resetPassword);
+router.patch('/:id', user_controller_1.UserController.updateProfile);
+exports.AuthRouter = router;

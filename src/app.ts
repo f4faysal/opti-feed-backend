@@ -11,6 +11,7 @@ const app: Application = express();
 app.use(
   cors({
     origin: 'http://localhost:3000',
+    // origin: 'https://tuntuni-feed.vercel.app',
     credentials: true,
   })
 );
