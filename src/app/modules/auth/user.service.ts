@@ -67,8 +67,6 @@ const loginUser = async (payload: {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect');
   }
 
-  //create access token & refresh token
-
   const { id: userId, username } = isUserExist;
   const accessToken = jwtHelpers.createToken(
     { userId, username },
@@ -88,13 +86,8 @@ const updateProfile = async (
   return result;
 };
 
-const getProfile = async (
-  username: string,
-  userId: string
-): Promise<User | null> => {
-  const result = await prisma.user.findUnique({ where: { id: username } });
-
-  console.log(username, 'getProfile');
+const getProfile = async (userId: string): Promise<User | null> => {
+  const result = await prisma.user.findUnique({ where: { id: userId } });
 
   const followersCount = await prisma.user.count({
     where: {

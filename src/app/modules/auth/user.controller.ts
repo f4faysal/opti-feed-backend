@@ -50,9 +50,8 @@ const updateProfile: RequestHandler = catchAsync(
 const getProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { userId } = req.user as { userId: string };
 
-    const result = await UserService.getProfile(id, userId);
+    const result = await UserService.getProfile(id);
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
