@@ -50,7 +50,8 @@ const updateProfile: RequestHandler = catchAsync(
     });
   }
 );
-
+//`/api/v1/users/:id`
+// Get user profile controller function to get user profile in data bases
 const getProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
