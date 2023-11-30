@@ -35,6 +35,7 @@ const loginUser: RequestHandler = catchAsync(
   }
 );
 
+// Update user profile controller function to update user profile in data bases
 const updateProfile: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { ...updateData } = req.body;
