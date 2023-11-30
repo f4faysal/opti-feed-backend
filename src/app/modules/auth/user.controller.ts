@@ -5,6 +5,7 @@ import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { UserService } from './user.service';
 
+// Register user controller function to register user in data bases
 const registerUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const result = await UserService.registerUser(req.body);
@@ -17,6 +18,8 @@ const registerUser: RequestHandler = catchAsync(
     });
   }
 );
+
+// Login user controller function to login user in data bases
 
 const loginUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
