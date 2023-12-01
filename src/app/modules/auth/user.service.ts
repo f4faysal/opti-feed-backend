@@ -10,6 +10,8 @@ import prisma from '../../../shared/prisma';
 import { sendEmail } from './sendResetMail';
 import { ISingUpUserResponse } from './user.interface';
 
+// Register user controller function to register user in data bases
+
 const registerUser = async (user: User): Promise<ISingUpUserResponse> => {
   if (!user.hashedPassword) {
     user.hashedPassword = config.default_pass as string;
