@@ -103,6 +103,8 @@ const updatedFollow: RequestHandler = catchAsync(
   }
 );
 
+// `api/v1/users/:username/followers/count`
+// Get user followers count controller function to get user followers count in data bases
 const getFollowersCount: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { username } = req.params;
