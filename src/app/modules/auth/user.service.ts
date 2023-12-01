@@ -81,7 +81,7 @@ const loginUser = async (payload: {
 
   return { accessToken };
 };
-
+// Update user profile controller function to update user profile in data bases
 const updateProfile = async (
   user: User,
   id: string
