@@ -66,7 +66,8 @@ const getProfile: RequestHandler = catchAsync(
     });
   }
 );
-
+// `api/v1/users/:username`
+// Get user by username controller function to get user by username in data bases
 const getUserByUsername: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { username } = req.params;
