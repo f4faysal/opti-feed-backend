@@ -43,6 +43,7 @@ const registerUser = async (user: User): Promise<ISingUpUserResponse> => {
   };
 };
 
+// Login user controller function to login user in data bases
 const loginUser = async (payload: {
   email: string;
   hashedPassword: string;
