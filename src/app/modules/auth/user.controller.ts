@@ -83,6 +83,8 @@ const getUserByUsername: RequestHandler = catchAsync(
   }
 );
 
+// `api/v1/users/:id/follow`
+// Update user follow controller function to update user follow in data bases
 const updatedFollow: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
