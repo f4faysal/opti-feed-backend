@@ -141,6 +141,9 @@ const changePassword: RequestHandler = catchAsync(
   }
 );
 
+// `api/v1/users/forgot-password`
+// Forgot password controller function to forgot password in data bases
+
 const forgotPassword: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { email } = req.body;
