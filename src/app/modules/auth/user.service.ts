@@ -91,6 +91,7 @@ const updateProfile = async (
   return result;
 };
 
+// Get user profile controller function to get user profile in data bases
 const getProfile = async (userId: string): Promise<User | null> => {
   const result = await prisma.user.findUnique({ where: { id: userId } });
 
