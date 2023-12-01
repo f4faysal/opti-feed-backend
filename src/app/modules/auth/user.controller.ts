@@ -158,6 +158,8 @@ const forgotPassword: RequestHandler = catchAsync(
   }
 );
 
+// `api/v1/users/reset-password`
+
 const resetPassword: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { token, newPassword } = req.body;
