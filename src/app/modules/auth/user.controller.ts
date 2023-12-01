@@ -159,6 +159,7 @@ const forgotPassword: RequestHandler = catchAsync(
 );
 
 // `api/v1/users/reset-password`
+// Reset password controller function to reset password in data bases
 
 const resetPassword: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
