@@ -118,6 +118,9 @@ const getFollowersCount: RequestHandler = catchAsync(
   }
 );
 
+// `api/v1/users/change-password`
+// Change password controller function to change password in data bases
+
 const changePassword: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const { oldPassword, newPassword } = req.body;
