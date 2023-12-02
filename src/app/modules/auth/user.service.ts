@@ -11,7 +11,6 @@ import { sendEmail } from './sendResetMail';
 import { ISingUpUserResponse } from './user.interface';
 
 // Register user controller function to register user in data bases
-
 const registerUser = async (user: User): Promise<ISingUpUserResponse> => {
   if (!user.hashedPassword) {
     user.hashedPassword = config.default_pass as string;
@@ -42,7 +41,6 @@ const registerUser = async (user: User): Promise<ISingUpUserResponse> => {
     refreshToken,
   };
 };
-
 // Login user controller function to login user in data bases
 const loginUser = async (payload: {
   email: string;
@@ -90,7 +88,6 @@ const updateProfile = async (
 
   return result;
 };
-
 // Get user profile controller function to get user profile in data bases
 const getProfile = async (userId: string): Promise<User | null> => {
   const result = await prisma.user.findUnique({ where: { id: userId } });
@@ -106,9 +103,7 @@ const getProfile = async (userId: string): Promise<User | null> => {
   console.log(followersCount, 'profile');
   return result;
 };
-
 // Get user by username controller function to get user by username in data bases
-
 const getUserByUsername = async (username: string): Promise<User | any> => {
   const result = await prisma.user.findUnique({ where: { username } });
 
@@ -123,7 +118,6 @@ const getUserByUsername = async (username: string): Promise<User | any> => {
   console.log(followersCount, getUserByUsername);
   return result;
 };
-
 // updated follow controller function to update follow in data bases
 const updatedFollow = async (
   currentUserId: string,
@@ -171,7 +165,6 @@ const updatedFollow = async (
 
   return updatedUser;
 };
-
 // get followers count controller function to get followers count in data bases
 const getFollowersCount = async (username: string): Promise<User | any> => {
   const result = await prisma.user.findUnique({ where: { username } });
