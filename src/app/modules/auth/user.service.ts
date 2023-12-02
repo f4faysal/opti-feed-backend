@@ -186,7 +186,7 @@ const getFollowersCount = async (username: string): Promise<User | any> => {
 
   return followersCount;
 };
-
+// change password controller function to change password in data bases
 const changePassword = async (
   userId: string,
   oldPassword: string,
