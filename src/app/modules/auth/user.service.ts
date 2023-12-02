@@ -266,7 +266,7 @@ const forgotPassword = async (email: string) => {
       'Reset password link sent to your email, inbox or spam folder please',
   };
 };
-
+// reset password controller function to reset password in data bases
 const resetPassword = async (token: string, newPassword: string) => {
   const { userId } = jwtHelpers.verifyToken(
     token,
