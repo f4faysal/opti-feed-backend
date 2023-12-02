@@ -172,6 +172,7 @@ const updatedFollow = async (
   return updatedUser;
 };
 
+// get followers count controller function to get followers count in data bases
 const getFollowersCount = async (username: string): Promise<User | any> => {
   const result = await prisma.user.findUnique({ where: { username } });
 
