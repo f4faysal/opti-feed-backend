@@ -228,7 +228,7 @@ const changePassword = async (
 
   return updatedUser;
 };
-
+// forgot password controller function to forgot password in data bases
 const forgotPassword = async (email: string) => {
   const user: any = await prisma.user.findUnique({
     where: {
