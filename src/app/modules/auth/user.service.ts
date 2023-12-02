@@ -107,6 +107,8 @@ const getProfile = async (userId: string): Promise<User | null> => {
   return result;
 };
 
+// Get user by username controller function to get user by username in data bases
+
 const getUserByUsername = async (username: string): Promise<User | any> => {
   const result = await prisma.user.findUnique({ where: { username } });
 
