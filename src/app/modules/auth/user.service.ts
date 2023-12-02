@@ -124,6 +124,7 @@ const getUserByUsername = async (username: string): Promise<User | any> => {
   return result;
 };
 
+// updated follow controller function to update follow in data bases
 const updatedFollow = async (
   currentUserId: string,
   userId: string
