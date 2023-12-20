@@ -20,6 +20,7 @@ const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
 const jwtHelpers_1 = require("../../../helpers/jwtHelpers");
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
 const sendResetMail_1 = require("./sendResetMail");
+// Register user controller function to register user in data bases
 const registerUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
     if (!user.hashedPassword) {
         user.hashedPassword = config_1.default.default_pass;
@@ -35,6 +36,7 @@ const registerUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
         refreshToken,
     };
 });
+// Login user controller function to login user in data bases
 const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, hashedPassword } = payload;
     const isPasswordMatched = (givenPassword, savedPassword) => __awaiter(void 0, void 0, void 0, function* () {
@@ -53,13 +55,14 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const accessToken = jwtHelpers_1.jwtHelpers.createToken({ userId, username }, config_1.default.jwt.secret, config_1.default.jwt.expires_in);
     return { accessToken };
 });
+// Update user profile controller function to update user profile in data bases
 const updateProfile = (user, id) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.user.update({ where: { id }, data: user });
     return result;
 });
-const getProfile = (username, userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.user.findUnique({ where: { id: username } });
-    console.log(username, 'getProfile');
+// Get user profile controller function to get user profile in data bases
+const getProfile = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.user.findUnique({ where: { id: userId } });
     const followersCount = yield prisma_1.default.user.count({
         where: {
             followingIds: {
@@ -70,6 +73,7 @@ const getProfile = (username, userId) => __awaiter(void 0, void 0, void 0, funct
     console.log(followersCount, 'profile');
     return result;
 });
+// Get user by username controller function to get user by username in data bases
 const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.user.findUnique({ where: { username } });
     const followersCount = yield prisma_1.default.user.count({
@@ -82,6 +86,7 @@ const getUserByUsername = (username) => __awaiter(void 0, void 0, void 0, functi
     console.log(followersCount, getUserByUsername);
     return result;
 });
+// updated follow controller function to update follow in data bases
 const updatedFollow = (currentUserId, userId) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield prisma_1.default.user.findUnique({
         where: {
@@ -121,6 +126,7 @@ const updatedFollow = (currentUserId, userId) => __awaiter(void 0, void 0, void 
     });
     return updatedUser;
 });
+// get followers count controller function to get followers count in data bases
 const getFollowersCount = (username) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.user.findUnique({ where: { username } });
     const followersCount = yield prisma_1.default.user.count({
@@ -132,6 +138,7 @@ const getFollowersCount = (username) => __awaiter(void 0, void 0, void 0, functi
     });
     return followersCount;
 });
+// change password controller function to change password in data bases
 const changePassword = (userId, oldPassword, newPassword) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield prisma_1.default.user.findUnique({
         where: {
@@ -156,6 +163,7 @@ const changePassword = (userId, oldPassword, newPassword) => __awaiter(void 0, v
     });
     return updatedUser;
 });
+// forgot password controller function to forgot password in data bases
 const forgotPassword = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield prisma_1.default.user.findUnique({
         where: {
@@ -179,6 +187,7 @@ const forgotPassword = (email) => __awaiter(void 0, void 0, void 0, function* ()
         message: 'Reset password link sent to your email, inbox or spam folder please',
     };
 });
+// reset password controller function to reset password in data bases
 const resetPassword = (token, newPassword) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId } = jwtHelpers_1.jwtHelpers.verifyToken(token, config_1.default.jwt.secret);
     const user = yield prisma_1.default.user.findUnique({
